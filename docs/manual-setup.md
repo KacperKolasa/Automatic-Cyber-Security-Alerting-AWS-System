@@ -1,95 +1,112 @@
 # Manual Setup
 
+First, we will create a flowchart for our project to simplify the development process. We will do this using [Miro](https://miro.com/).
+
+Our flow chart looks like this:
+![Flow Chart](https://i.imgur.com/kfx2hyp.jpeg)
+
+Now we will create our project step by step according to the flowchart.
+
+## Prerequisites
+
+- AWS account with necessary permissions
+- Access to the AWS Management Console
+- Valid email address for receiving notifications
+
 ## Setting up GuardDuty
-First we want to setup GuardDuty, to do this we will launch the AWS console and in the search bar we will type in "GuardDuty":
 
-<img src="https://i.imgur.com/jN2YbRq.jpeg"/>
+First, we want to set up GuardDuty. To do this, we will launch the AWS console and in the search bar, type in "GuardDuty":
 
-Next we want to click that and proceed to enable the service for our AWS account, after which we should see the GuardDuty dashboard:
+![Search GuardDuty](https://i.imgur.com/jN2YbRq.jpeg)
 
-<img src="https://i.imgur.com/sLphTLH.jpeg"/>
+Next, click on "GuardDuty" and proceed to enable the service for our AWS account. After this, we should see the GuardDuty dashboard:
+
+![GuardDuty Dashboard](https://i.imgur.com/sLphTLH.jpeg)
 
 ## Setting up SNS
-Now that we have GuardDuty, lets set up SNS (Simple Notification System). We will search for SNS in the search bar, after which we will be greeted by this screen:
 
-<img src="https://i.imgur.com/0b90zKZ.jpeg"/>
+Now that we have GuardDuty, let's set up SNS (Simple Notification System). We will search for SNS in the search bar. After which, we will be greeted by this screen:
 
-We will type "GuardDuty-Alerts" in the Topic Name box and press next:
+![Search SNS](https://i.imgur.com/0b90zKZ.jpeg)
 
-<img src="https://i.imgur.com/XoNfUEG.jpeg"/>
+We will type "GuardDuty-Alerts" in the Topic Name box and press "Next":
 
-Now, we can see a range of different options that we can choose from, for this project we will leave everything as default and press Create Topic.
+![Create Topic](https://i.imgur.com/XoNfUEG.jpeg)
 
-<img src="https://i.imgur.com/1lHS3Cv.jpeg"/>
+We will leave everything as default and press "Create Topic".
 
-Now we can see an overview of our topic, in which we will press the Create Subscription button at the buttom.
+![Create Topic Overview](https://i.imgur.com/1lHS3Cv.jpeg)
 
-<img src="https://i.imgur.com/NYPGeta.jpeg"/>
+Now we can see an overview of our topic. Click on the "Create Subscription" button at the bottom.
+
+![Create Subscription](https://i.imgur.com/NYPGeta.jpeg)
 
 We are now shown a page with different options for our subscription:
 
-<img src="https://i.imgur.com/Cfc5Adt.jpeg"/>
+![Subscription Options](https://i.imgur.com/Cfc5Adt.jpeg)
 
-We will choose our newly created topic as the topic ARN and for this protocol we will choose the Email protocol and enter our email address, however you are free to choose whichever protocol suit you best:
+We will choose our newly created topic as the topic ARN. For the protocol, we will choose the Email protocol and enter our email address. You are free to choose whichever protocol suits you best:
 
-<img src="https://i.imgur.com/IXdsB7w.jpeg"/>
+![Email Subscription](https://i.imgur.com/IXdsB7w.jpeg)
 
 We now have to confirm our subscription email by clicking on the link sent to us by AWS.
 
 ## Setting up CloudWatch
-Now, we want to go back to the search bar and type in CloudWatch and open it:
 
-<img src="https://i.imgur.com/yUfO6PV.jpeg"/>
+Next, we want to go back to the search bar, type in CloudWatch, and open it:
 
-Next we will expand the Events menu on the sidebar and click on Rules.
+![Search CloudWatch](https://i.imgur.com/yUfO6PV.jpeg)
 
-<img src="https://i.imgur.com/aum33EV.jpeg"/>
+Expand the "Events" menu on the sidebar and click on "Rules".
 
-Now we will click the Create Rule button at the bottom of the screen:
+![Expand Events Menu](https://i.imgur.com/aum33EV.jpeg)
 
-<img src="https://i.imgur.com/dbRfA7N.jpeg"/>
+Click the "Create Rule" button at the bottom of the screen:
 
-We will give our rule a name and press Next:
+![Create Rule](https://i.imgur.com/dbRfA7N.jpeg)
 
-<img src="https://i.imgur.com/0446R6Q.jpeg"/>
+We will give our rule a name and press "Next":
 
-Next, we will modify the Event Pattern and choose GuardDuty as an AWS Service followed by GuardDuty Finding as the Event Type:
+![Name Rule](https://i.imgur.com/0446R6Q.jpeg)
 
-<img src="https://i.imgur.com/upSsHIc.jpeg"/>
+Next, we will modify the Event Pattern. Choose "GuardDuty" as an AWS Service followed by "GuardDuty Finding" as the Event Type:
 
-You can also change the event pattern to only include findings of a certain severity and higher, but for now we will leave it as default.
+![Modify Event Pattern](https://i.imgur.com/upSsHIc.jpeg)
 
-On the next page, we will choose SNS Topic as our target and we will use the topic we created earlier as our Topic.
+You can also change the event pattern to only include findings of a certain severity and higher, but for now, we will leave it as default.
 
-<img src="https://i.imgur.com/hOAn13R.jpeg"/>
+On the next page, we will choose "SNS Topic" as our target and use the topic we created earlier as our Topic.
 
-Next, we will open the additional settings drop down and change the Configure target input to Input Transformer and then click on Configure input transformer:
+![Choose SNS Topic](https://i.imgur.com/hOAn13R.jpeg)
 
-<img src="https://i.imgur.com/2kIHbi7.jpeg"/>
+Open the additional settings drop-down and change the "Configure target input" to "Input Transformer" and then click on "Configure input transformer":
+
+![Configure Input Transformer](https://i.imgur.com/2kIHbi7.jpeg)
 
 After that we will paste in the code located at [/config/input_path.json](/config/input_path.json) into the Input path and the code located at [/config/input_template.json](/config/input_template.json) into the Template, this will make our alert arrive in a structured format.
 
-<img src="https://i.imgur.com/6aPNOtD.jpeg"/>
+![Input Transformer](https://i.imgur.com/6aPNOtD.jpeg)
 
-We will leave the tags as they are:
+Leave the tags as they are:
 
-<img src="https://i.imgur.com/rHStGUk.jpeg"/>
+![Leave Tags](https://i.imgur.com/rHStGUk.jpeg)
 
-And finally we will click Create Rule on the next page and we should see our rule active on the dashboard:
+Finally, click "Create Rule" on the next page and we should see our rule active on the dashboard:
 
-<img src="https://i.imgur.com/wkmWk0b.jpeg"/>
+![Rule Active](https://i.imgur.com/wkmWk0b.jpeg)
 
 ## Testing
-Now, to test our system we will go back to GuardDuty and click on settings in the sidebar:
 
-<img src="https://i.imgur.com/gJuiGYI.jpeg"/>
+To test our system, go back to GuardDuty and click on "Settings" in the sidebar:
 
-We will scroll down to Sample Findings and press on the Generate Sample Findings button:
+![GuardDuty Settings](https://i.imgur.com/gJuiGYI.jpeg)
 
-<img src="https://i.imgur.com/Ee9rEao.jpeg"/>
+Scroll down to "Sample Findings" and press the "Generate Sample Findings" button:
+
+![Generate Sample Findings](https://i.imgur.com/Ee9rEao.jpeg)
 
 After we do this, we should receive messages from AWS detailing all of these findings:
 
-<img src="https://i.imgur.com/Rtcv2zl.jpeg"/>
+![Received Messages](https://i.imgur.com/Rtcv2zl.jpeg)
 
-Once you can see those received messages, that means everythings works correctly and you are done!
+Once you can see those received messages, that means everything works correctly and you are done!
