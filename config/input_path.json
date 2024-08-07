@@ -1,0 +1,8 @@
+{
+  "Account_ID": "$.detail.accountId",
+  "Finding_ID": "$.detail.id",
+  "Finding_Type": "$.detail.type",
+  "Finding_description": "$.detail.description",
+  "region": "$.region",
+  "severity": "$.detail.severity"
+}
