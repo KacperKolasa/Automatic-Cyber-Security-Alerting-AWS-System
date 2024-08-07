@@ -67,7 +67,7 @@ Next, we will open the additional settings drop down and change the Configure ta
 
 <img src="https://i.imgur.com/2kIHbi7.jpeg"/>
 
-After that we will paste in the code located at [] into the Input path and the code located at [] into the Template, this will make our alert arrive in a structured format.
+After that we will paste in the code located at [config/input_path.json](config/input_path.json) into the Input path and the code located at [config/input_template.json](config/input_template.json) into the Template, this will make our alert arrive in a structured format.
 
 <img src="https://i.imgur.com/6aPNOtD.jpeg"/>
 
