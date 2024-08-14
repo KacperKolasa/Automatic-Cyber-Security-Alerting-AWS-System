@@ -14,6 +14,8 @@ An automated system to monitor, detect, and alert users of security events in AW
 - Amazon SNS
 - Amazon CloudWatch
 - Terraform
+- Jira
+- Miro
 
 ## Setup Instructions
 Choose your preferred setup method:
