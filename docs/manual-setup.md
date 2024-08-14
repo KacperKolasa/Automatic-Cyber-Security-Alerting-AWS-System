@@ -1,11 +1,13 @@
 # Manual Setup
 
-First, we will create a flowchart for our project to simplify the development process. We will do this using [Miro](https://miro.com/).
+First, we will create a very abstracted flowchart for our project to simplify and create an order for the development process. We will do this using [Miro](https://miro.com/).
 
 Our flow chart looks like this:
 ![Flow Chart](https://i.imgur.com/kfx2hyp.jpeg)
 
-Now we will create our project step by step according to the flowchart.
+Next we will use [Atlassian Jira](https://www.atlassian.com/software/jira) to create a more detailed plan according to our flow chart.
+
+Now we will create our project step by step according to the flowchart and Jira board.
 
 ## Prerequisites
 
