@@ -1,21 +1,53 @@
-# Automatic Cyber Security AWS Alert System
+# Automatic Cyber Security Alerting AWS System
 
-## Description
-An automated system to monitor, detect, and alert users of security events in AWS using GuardDuty, SNS, and CloudWatch. This repository provides both manual setup instructions through the AWS Console and automated setup using Terraform.
+## Overview
+This project automates cyber security alerts within AWS, utilizing AWS GuardDuty for threat detection, SNS for notifications, and CloudWatch for event monitoring. It ensures continuous protection and real-time alerts based on customizable thresholds.
 
 ## Features
-- Continuous monitoring with AWS GuardDuty
-- Real-time notifications using Amazon SNS
-- Customizable alerts with CloudWatch
-- Simulated incident testing with GuardDuty sample findings
+- **Continuous Threat Detection:** GuardDuty monitors your AWS environment for suspicious activity.
+- **Real-time Notifications:** SNS sends instant alerts to email or phone.
+- **Customizable Alerting:** CloudWatch rules filter and trigger alerts based on severity.
 
-## Technologies Used
-- AWS GuardDuty
-- Amazon SNS
-- Amazon CloudWatch
-- Terraform
-- Jira
-- Miro
+## Architecture
+This project utilizes a combination of AWS services and project management tools to ensure a streamlined and efficient workflow.
+
+- **AWS GuardDuty**: Monitors and detects security threats within your AWS environment.
+- **AWS SNS (Simple Notification Service)**: Sends real-time alerts based on GuardDuty findings.
+- **AWS CloudWatch**: Captures GuardDuty events and triggers SNS notifications based on custom rules.
+- **Jira Kanban Board**: Tracks the project's tasks, issues, and progress, ensuring that all aspects of the project are managed efficiently.
+#### Jira Board:
+![Jira Board](https://i.imgur.com/tC5xeVy.jpeg)
+#### Miro Architecture Diagram:
+![Architecture Diagram](https://i.imgur.com/nK7btmr.jpeg)
+
+## Directory Structure
+
+- [config/](config/)
+  - [input_path.json](config/input_path.json)
+  - [input_template.json](config/input_template.json)
+- [docs/](docs/)
+  - [terraform/](docs/terraform/)
+    - [cloudwatch/](docs/terraform/cloudwatch/)
+      - [cloudwatch.tf](docs/terraform/cloudwatch/cloudwatch.tf)
+      - [variables.tf](docs/terraform/cloudwatch/variables.tf)
+    - [guardduty/](docs/terraform/guardduty/)
+      - [guardduty.tf](docs/terraform/guardduty/guardduty.tf)
+    - [sns/](docs/terraform/sns/)
+      - [outputs.tf](docs/terraform/sns/outputs.tf)
+      - [sns.tf](docs/terraform/sns/sns.tf)
+      - [main.tf](docs/terraform/sns/main.tf)
+- [manual-setup.md](manual-setup.md)
+- [terraform-setup.md](terraform-setup.md)
+- [README.md](README.md)
+
+## Getting Started
+### Prerequisites
+#### Necessities:
+- AWS Account: Required to deploy and manage AWS services like GuardDuty, SNS, and CloudWatch.
+#### Optional:
+- Terraform: Recommended for automating the deployment of the infrastructure.
+- Jira: Useful for project management, tracking tasks, and issues.
+- Miro: Ideal for creating flowcharts and diagrams to visualize the architecture.
 
 ## Setup Instructions
 Choose your preferred setup method:
@@ -58,4 +90,3 @@ If you want to remove the setup:
 - Manually delete resources through the AWS Console if set up manually.
 
 By following these steps, you can ensure that your Automatic Cyber Security Alerting AWS System is properly monitoring your environment and that you are promptly notified of any significant security events.
-
