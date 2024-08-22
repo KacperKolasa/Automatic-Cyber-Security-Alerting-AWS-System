@@ -51,8 +51,8 @@ This project utilizes a combination of AWS services and project management tools
 
 ## Setup Instructions
 Choose your preferred setup method:
-- [Manual Setup via AWS Console](docs/manual-setup.md)
-- [Automated Setup via Terraform](docs/terraform-setup.md)
+- [Manual Setup via AWS Console](manual-setup.md)
+- [Automated Setup via Terraform](terraform-setup.md)
 
 ## Usage
 
